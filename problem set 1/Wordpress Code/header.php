@@ -1,45 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html <?php language_attributes(); ?>>
   <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>One Page Wonder - Start Bootstrap Template</title>
+    <meta charset="<?php bloginfo('charset'); ?>">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="<?php bloginfo('description'); ?>">
+    <title>
+      <?php bloginfo('name'); ?> |
+      <?php is_front_page() ? bloginfo('description') : wp_title(); ?>
+    </title>
 
     <!-- Bootstrap core CSS -->
-    <link href="<?php bloginfo("template_url")?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom fonts for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="<?php bloginfo('template_url'); ?>/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="<?php bloginfo("template_url")?>/css/one-page-wonder.min.css" rel="stylesheet">
-
+    <link href="<?php bloginfo('stylesheet_url'); ?>" rel="stylesheet">
+    <?php wp_head(); ?>
   </head>
 
   <body>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="http://dev-taodong.pantheonsite.io">Start Bootstrap</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Sign Up</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Log In</a>
-            </li>
-          </ul>
-        </div>
+    <div class="blog-masthead">
+        <nav class="navbar navbar-expand-md navbar-light bg-light" role="navigation">
+          <div class="container">
+          	<!-- Brand and toggle get grouped for better mobile display -->
+	          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+		                <span class="navbar-toggler-icon"></span>
+          	</button>
+	          <a class="navbar-brand" href="#">Navbar</a>
+	                	<?php
+	                 	wp_nav_menu( array(
+		                    	'theme_location'    => 'primary',
+		                    	'depth'             => 2,
+		                     	'container'         => 'div',
+			                    'container_class'   => 'collapse navbar-collapse',
+			                    'container_id'      => 'bs-example-navbar-collapse-1',
+			                    'menu_class'        => 'nav navbar-nav',
+			                    'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+			                    'walker'            => new WP_Bootstrap_Navwalker(),
+	                	) );
+	                	?>
+         	</div>
+        </nav>
+    </div>
+
+    <div class="container">
+      <div class="blog-header">
+        <h1 class="blog-title"><?php bloginfo('name'); ?></h1>
+        <p class="lead blog-description"><?php bloginfo('description'); ?></p>
       </div>
-    </nav>
